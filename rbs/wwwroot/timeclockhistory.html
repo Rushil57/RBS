@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Timeclock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/timeclockhistory.js"></script>
+    <script src="js/menu.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/timeclockhistory.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"> </ul>
+
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form id="frmSubmit" method="post" action="/api/Timeclock/PayReport">
+
+                    <div class="form-inline" style="text-align:center;margin-bottom:20px">
+                        <label for="email" class="mr-sm-2">Select Agent</label>
+                        <select id="DDLAgents" class="form-control"></select>
+                        <label for="email" class="mr-sm-2">From Date</label>
+                        <input id="txtStartDate" class="form-control" type="text">
+                        <label for="pwd" class="mr-sm-2">To Date</label>
+                        <input id="txtEndDate" class="form-control" type="text">
+                        <input type="button" class="btn btn-primary" id="btnSearch" value="Search" style="width: 100px;" />
+                        <label for="payDate" class="mr-sm-2">Pay Date</label>
+                        <input id="txtPayDate" class="form-control" type="text">
+
+                        <input type="button" class="btn btn-primary" id="btnPayReport" value="PayReport" style="width: 100px;display: none;" onclick="GeneratePDF()" />
+                    </div>
+
+                    <div class="form-inline" style="text-align:center;">
+                       
+                    </div>
+                    <br />
+                    <div class="form-group" id="divMaxDollarPerHour">
+                        <label>$15 per hour (uncheck for $11)</label>
+                        <input type="checkbox" id="chkMaxDollarPerHour" name="chkMaxDollarPerHour" checked />
+                    </div>
+                    <br />
+                    <div class="alert alert-danger" id="errorMessage" style="display:none;text-align:center;">
+                        <strong id="msg"></strong>
+                    </div>
+                </form>
+                <br />
+
+                <div id="loader" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                <div style="text-align:left;display:none" id="divLoggedIn">
+                    <label id="currentStatus" class="label label-primary"></label>
+                </div>
+                <br />
+                <span id="spanTimeclockHistory"></span>
+                <hr />
+                <span id="spanPayResults"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    function GeneratePDF() {
+        $("#btnPayReport").prop("disabled", true);
+        GetPayReport(0);
+    }
+</script>

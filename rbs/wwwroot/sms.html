@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | SMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+</head>
+<body style="overflow-y:hidden">
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse" id="menus" style="display:none;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>                    
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div class="pretty-split-pane-frame" id="splitPanel" style="overflow:hidden">
+            <div class="split-pane fixed-bottom" id="split-pane-1" style="min-height:100px">
+                <div class="split-pane-component" id="top-component">
+                    <div class="split-pane-component" id="bottom-component">
+                        <div class="split-pane fixed-left" id="split-pane-2">
+                            <div class="split-pane-component" id="left-component" style="min-height:100%;height:100%;">
+                                <div class="pretty-split-pane-component-inner">
+                                    <div class="inbox_people">
+                                        <div class="inbox_chat">
+                                            <span id="spanChatList"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="split-pane-divider" id="vertical-divider"></div>
+                            <div class="split-pane-component" id="right-component">
+                                <div class="split-pane horizontal-percent">
+                                    <div class="split-pane-component" id="top-component2" style="min-height:200px;overflow:hidden">
+                                        <div class="pretty-split-pane-component-inner">
+                                            <div class="mesgs" style="position:relative;height:100%">
+                                                <div class="msg_history" id="msgs">
+                                                    <span id="mess"></span>
+
+                                                </div>
+                                                <div id="loading" class="msg_history" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="split-pane-divider" id="horizontal-divider2"></div>
+                                    <div class="split-pane-component" id="bottom-component2" style="min-height:130px;overflow:hidden">
+                                        <div class="pretty-split-pane-component-inner" style="padding:5px;">
+                                            <div class="panel-bottom" id="divBottom" style="position:relative;overflow-y:scroll !important;">
+                                                <div class="form-group" style="margin-bottom:5px !important">
+                                                    <textarea cols="40" rows="3" class="form-control" placeholder="type your message here" id="txtSmsToSend"></textarea>
+                                                </div>
+                                                <div class="form-group" style="margin-bottom:3px !important">
+                                                    <div style="float:left;width:100%">
+                                                        <input type="button" value="Send SMS" class="btn btn-primary" id="btnSendSMS" />
+                                                        <button type="button" id="fileImageupload" class="btn btn-primary" style="display:inline-block;width:50px !important"><i class="fa fa-picture-o"></i></button>
+                                                        <input id="fileid" type="file" style="display:none" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
+                                                        <img src="img/loader.gif" id="loader" style="display:none;" />
+                                                        <span style="color:red;display:none" id="spanimagevalidation">Allowed only .jpg file.</span>
+                                                        <input type="button" value="View SMS History" class="btn btn-primary" id="btnViewHistory" style="float:right"/>
+                                                    </div>
+                                                    <div class="col-md-12 col-sm-12 col-xs-12 alert alert-danger" id="errorMessage" style="display:none;text-align:center;padding:5px !important;margin-top:5px;">
+                                                        <strong id="msg"></strong>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="css/bubbly.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="js/sms.js"></script>
+    <!--<script src="js/menu.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <link href="css/chat.css" rel="stylesheet" />
+    <link href="css/split-pane.css" rel="stylesheet" />
+    <link href="css/pretty-split-pane.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="js/split-pane.js"></script>
+    <!--<script src="signalr/signalr.js"></script>-->
+    <!--<script src="signalr/signalr.min.js"></script>
+    <script src="js/chat.js"></script>-->
+    <script type="text/javascript">
+        $(window).on('load resize', function () {
+            SetPage();
+        });
+        $(document).ready(function () {
+            var cacheBust = ['js/menu.js'];
+            ClearCache(cacheBust);
+            SetPage();
+            $("#left-component").css('width', '20%');
+        });
+        
+        $(function () {
+            $('div.split-pane').splitPane();
+        });
+        document.getElementById('fileImageupload').addEventListener('click', openDialog);
+
+        function openDialog() {
+            document.getElementById('fileid').click();
+        }
+    </script>
+
+</body>
+</html>

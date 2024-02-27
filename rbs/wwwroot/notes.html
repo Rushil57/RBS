@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse" id="menus" style="display:none;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                    <!--<img src="img/pl_72x72.png" />-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div id="divNotesHeader" class="col-md-12">
+            AgentId: <span id="spanAgentId"></span>&nbsp; &nbsp;
+            LeadId: <span id="spanLeadId"></span> &nbsp; &nbsp;
+            AccountId: <span id="spanAccountId"></span><br />
+            <br />
+            <label>Select File</label><input type="file" class="form-control" id="uploadfile" />
+            <br />
+            <input type="button" value="Save File" class="btn btn-primary" id="btnSaveFile" />
+            <br />
+            <div id="saveFileLoading" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+        </div>
+        <div class="panel-body">
+            <form role="form">
+                <div class="form-group">
+                    <label>Note</label>
+                    <textarea cols="40" rows="5" id="txtNoteText" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="button" value="Save Note" class="btn btn-primary" id="btnSaveNote" />
+                </div>
+                <hr />
+                <h3>History</h3>
+                <span id="spanPastNotes"></span>
+                <div id="loading" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+            </form>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/notes.js"></script>
+    <script src="js/menu.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/notes.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</body>
+</html>

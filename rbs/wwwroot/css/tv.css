@@ -1,0 +1,126 @@
+﻿body {
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 2.1rem;
+    width: 100%;
+    position: relative;
+    height: calc(100% - 2em);
+}
+
+td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+}
+
+td {
+    text-align: left;
+}
+
+caption {
+    padding: 10px;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.tableHeader {
+    background-color: #1bbee9;
+    color: #421e1e;
+    /*color: white;*/
+}
+
+.tableHeader2 {
+    background-color: #3F51B5;
+    /*color: #421e1e;*/
+    color: white;
+}
+
+.tabledata {
+    font-weight: bold;
+}
+
+.navbar-brand {
+    padding-top: 5px;
+    height: 70px;
+    padding-bottom: 5px;
+}
+
+.navbar-nav {
+    margin: 9.5px -15px
+}
+
+.carousel-inner,
+.item,
+item active {
+    background-color: #faebd7;
+    position: relative;
+}
+
+.tableBodyEven {
+    background-color: #fff;
+}
+
+.tableBodyOdd {
+    background-color: #fff;
+}
+
+.divDate {
+    margin-bottom: 10px;
+    margin-top: 15px;
+    background-color: #1bbee9;
+    height: 50px;
+    padding: 10px 10px 10px 10px;
+    color: #fff;
+}
+
+
+.carousel-control.left {
+    background-image: none !important;
+}
+
+.carousel-control.right {
+    background-image: none !important;
+}
+
+.carousel-control {
+    color: #1bbee9 !important;
+    position: fixed !important;
+    /*top: 50% !important;*/
+    /*height: 50px !important;
+    width: 50px !important;*/
+    /*background-color: #000 !important;*/
+    opacity: 0.1 !important;
+}
+
+.carousel-control:hover {
+    color: #1bbee9 !important;
+    display: block;
+    opacity: 0.8 !important;
+}
+
+span.glyphicon glyphicon-chevron-right:before {
+    padding-top: 10px !important;
+}
+
+span.glyphicon glyphicon-chevron-left:before {
+    padding-top: 10px !important;
+}
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, .carousel-control .icon-prev {
+    margin-top: -16px !important;
+    margin-right: -16px;
+    margin-left: -16px;
+}
+
+span.glyphicon.glyphicon-chevron-right
+{
+    display:none;
+}
+span.glyphicon.glyphicon-chevron-left {
+    display: none;
+}

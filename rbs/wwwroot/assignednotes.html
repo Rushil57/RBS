@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/unassigned.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+
+        });
+        window.onload = function () {
+            ////LoadAccount();
+            var _DocId = getParameterByName("did");
+            if (_DocId == "") {
+                $("#divFileUpload").show();
+                $("#divFileName").hide();
+                $("#divHistory").hide();
+            }
+            else {
+
+                GetDocumentFileById();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse" id="menus">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                    <!--<img src="img/pl_72x72.png" />-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div id="divNotesHeader" class="col-md-12">
+            <br />
+            <div class="form-group" id="divFileName">
+                <label>File Name:</label>
+                <input type="hidden" id="hdnfilename" />
+                <span id="btnDownload"></span>
+                <label id="lblfilename"></label>
+                <a href="#" onclick="GetAccountDocument()" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i> View </a>
+            </div>
+
+            <div class="form-group" id="divFileUpload">
+                <label>Select File</label>
+                <input type="file" class="form-control" id="uploadfile" onchange="validateFileType()" />
+            </div>
+
+
+            <div class="form-group">
+                <label>Select Account</label>
+                <input type="text" id="DDLAccount" class="form-control" />
+                <!--<select id="DDLAccount" class="form-control"></select>-->
+
+            </div>
+
+            <div class="form-group">
+                <input type="button" value="Save File" class="btn btn-primary" id="btnSaveFile" />
+            </div>
+
+            <div class="alert alert-success" id="msgFileSuccess" style="display: none;">
+                <strong>File Upload successfully.</strong>
+            </div>
+            <div class="alert alert-danger" id="msgFileFail" style="display: none;">
+                <strong id="msgFile"></strong>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <label>Note</label>
+                <textarea cols="40" rows="5" id="txtNoteText" class="form-control"></textarea>
+            </div>
+
+            <input type="button" value="Save Note" class="btn btn-primary" id="btnSaveNote" />
+            <br />
+            <!--<div id="saveFileLoading" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>-->
+            <br />
+            <div class="alert alert-success" id="msgSuccess" style="display: none;">
+                <strong>Note save successfully.</strong>
+            </div>
+            <div class="alert alert-danger" id="msgFail" style="display: none;">
+                <strong id="msg"></strong>
+            </div>
+
+            <div class="col-md-12" id="divHistory">
+                <h2>
+                    History
+                </h2>
+            </div>
+            <span id="spanAccountNotes"></span>
+
+        </div>
+        <div id="loading" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+
+    </div>
+
+</body>
+</html>

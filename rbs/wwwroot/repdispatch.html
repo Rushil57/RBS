@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Sched Appt Dispatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/repdispatch.js?v=1.0"></script>
+    <script src="js/menu.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/repdispatch.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                    <!--<img src="img/pl_72x72.png" />-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>                    
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" id="txtName" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" id="txtAddress" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" class="form-control" id="txtPhone" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Sched Appt</label>
+                        <input type="text" class="form-control" id="txtSchedAppt">
+                    </div>
+                    <div class="form-group">
+                        <label>Sched Notes</label>
+                        <textarea rows="3" class="form-control" id="txtSANote"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Save Note" class="btn btn-primary" id="btnSaveSchedNote" />
+                        <img src="img/loader.gif" id="loaderSaveNote" style="display:none;" />
+                    </div>
+                    <div class="alert alert-success" id="successSschednotes" style="display: none;">
+                        <strong>Note Added successfully.</strong>
+                    </div>
+                    <div class="alert alert-danger" id="errorMessageschednotes" style="display: none;">
+                        <strong id="msg"></strong>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Tech</label>
+                        <select id="DDLAgents" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Count Stat</label>
+                        <input type="checkbox" id="chkIsCountState" name="chkIsCountState" checked />
+                    </div>
+
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="button" value="Dispatch It!" class="btn btn-primary" id="btnSendIt" />
+                            <img src="img/loader.gif" id="loaderSchedAppt" style="display:none;" />
+                            <input type="button" value="Mark UFS" class="btn btn-primary" id="btnMarkUFS" />
+                            <img src="img/loader.gif" id="loaderMarkUFS" style="display:none;" />
+                            <input type="button" value="Mark No Show" class="btn btn-primary" id="btnMarkNoShow" />
+                            <img src="img/loader.gif" id="loaderMarkNoShow" style="display:none;" />
+                            <!--
+                            <input type="button" value="Mark Sold" class="btn btn-primary" id="btnMarkSold" />
+                            <img src="img/loader.gif" id="loaderMarkSold" style="display:none;" />
+                            <input type="button" value="Mark Inst" class="btn btn-primary" id="btnMarkInst" />
+                            <img src="img/loader.gif" id="loaderMarkInst" style="display:none;" />
+                            -->
+                            <input type="button" value="Send To Resched" class="btn btn-primary" id="btnSendToResched" />
+                            <img src="img/loader.gif" id="loaderSendToResched" style="display:none;" />
+                            <input type="button" value="More Controls" class="btn btn-primary" id="btnMoreControls" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <img src="img/loader.gif" id="loader" style="display:none;" />
+                    </div>
+                    <hr />
+                    <span id="spanNotes"></span>
+                    <div class="alert alert-danger" id="errorMessage" style="display:none;">
+                        <strong>An error has been occured during extraction of CSV file.</strong>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

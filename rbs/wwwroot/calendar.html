@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Internal Sales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/calendar.js?v=1.0"></script>-->
+    <!--<script src="js/menu.js"></script>-->
+    <!--<script src="js/common.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var cacheBust = ['js/calendar.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form role="form">
+                    <div id="loader" style="display: none; text-align: center;"><img src="img/loading.gif" /></div>
+                    <div class="row" id="ufsHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">UFS:</h3>
+                        </div>
+                    </div>
+                    <span id="spanUFSResults"></span>
+
+                    <div class="row" id="rescheduleHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">Reschedule:</h3>
+                        </div>
+                    </div>
+                    <span id="spanRescheduleResults"></span>
+
+                    <div class="row" id="yesterdayHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">Yesterday:</h3>
+                        </div>
+                    </div>
+                    <span id="spanYesterdayResults"></span>
+
+                    <div class="row" id="todayHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">Today:</h3>
+                        </div>
+                    </div>
+                    <span id="spanTodayResults"></span>
+
+                    <div class="row" id="thisWeekHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">This Week:</h3>
+                        </div>
+                    </div>
+                    <span id="spanThisWeekResults"></span>
+
+                    <div class="row" id="lastWeekHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">Last Week:</h3>
+                        </div>
+                    </div>
+                    <span id="spanLastWeekResults"></span>
+
+                    <div class="row" id="AllSchedHeader">
+                        <div class="col-lg-12">
+                            <h3 class="page-header">All Sched Appt:</h3>
+                        </div>
+                    </div>
+                    <span id="spanLastWeekThisWeekData"></span>
+
+                    <h2 id="msg" style="text-align: center;"></h2>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

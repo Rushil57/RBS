@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Tech Dispatch</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                    <!--<img src="img/pl_72x72.png" />-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>                    
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="panel-body">
+                <div class="row">
+
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Select Tech</label>
+                            <select id="DDLTechs" class="form-control"></select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer Name</label>
+                            <input type="text" class="form-control" id="txtCustName" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer Address</label>
+                            <input type="text" class="form-control" id="txtAddress" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer City</label>
+                            <input type="text" class="form-control" id="txtCity" />
+                        </div>
+                        <div class="form-group">
+                            <label>Customer State</label>
+                            <input type="text" class="form-control" id="txtState" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer Phone</label>
+                            <input type="text" class="form-control" id="txtPhone" />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Install Date/Time</label>
+                            <input type="text" class="form-control" id="txtInstallTime">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Equipment Order / Notes</label>
+                            <textarea rows="6" class="form-control" id="txtEquipment"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" value="Dispatch Tech" class="btn btn-primary" id="btnDispatchTech" style="display:none;">
+                        </div>
+
+                        <div class="alert alert-success" id="successMsg" style="display:none;">
+                            <strong>Agent Selected Successfully.</strong>
+                        </div>
+                        <div class="alert alert-danger" id="errorMessage" style="display:none;">
+                            <strong id="msg"></strong>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/menu.js"></script>
+    <script src="js/dispatchtech.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/dispatchtech.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</body>
+</html>

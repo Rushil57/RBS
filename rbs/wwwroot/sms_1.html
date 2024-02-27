@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | SMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body style="overflow-y:hidden">
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse" id="menus" style="display:none;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                    <span id="spanClockinout"></span>
+                </div>
+            </div>
+        </nav>
+
+        <!--<div class="tab-content">
+            <div class="tab-pane fade in active" id="sms" name="sms" role="tabpanel">
+                <div id="divNotesHeader">
+                    AgentId: <span id="spanAgentId"></span>&nbsp; &nbsp;
+                </div>
+            </div>
+            <div class="messaging">
+
+                <div class="inbox_msg" id="divTop">
+                    <div class="inbox_people">
+                        <div class="inbox_chat">
+                            <span id="spanChatList"></span>
+                        </div>
+                    </div>
+                    <div class="mesgs">
+                        <div class="msg_history" id="msgs">
+                            <span id="mess"></span>
+                            <input hidden id="hdnmsgid" />
+                        </div>
+                        <div id="loading" class="msg_history" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                    </div>
+                </div>
+                <div class="panel-bottom" id="divBottom">
+                    <div class="form-group">
+                        <textarea cols="40" rows="5" class="form-control" placeholder="type your message here" id="txtSmsToSend"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Send SMS" class="btn btn-primary" id="btnSendSMS" />
+                        <img src="img/loader.gif" id="loader" style="display:none;" />
+                    </div>
+                    <div class="alert alert-danger" id="errorMessage" style="display:none;text-align:center;">
+                        <strong id="msg"></strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+
+
+
+        <div class="pretty-split-pane-frame" id="splitPanel" style="overflow:hidden">
+            <div class="split-pane fixed-bottom" id="split-pane-1" style="min-height:100px">
+                <div class="split-pane-component" id="top-component">                  
+                    <div class="split-pane-component" id="bottom-component">
+                        <div class="split-pane fixed-left" id="split-pane-2">
+                            <div class="split-pane-component" id="left-component" style="min-height:100%;height:100%;">
+                                <div class="pretty-split-pane-component-inner">
+                                    <div class="inbox_people">
+                                        <div class="inbox_chat">
+                                            <span id="spanChatList"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="split-pane-divider" id="vertical-divider"></div>
+                            <div class="split-pane-component" id="right-component">
+                                <div class="split-pane horizontal-percent">
+                                    <div class="split-pane-component" id="top-component2" style="min-height:200px;overflow:hidden">
+                                        <div class="pretty-split-pane-component-inner">
+                                            <div class="mesgs" style="position:relative;height:100%">
+                                                <div class="msg_history" id="msgs">
+                                                    <span id="mess"></span>
+                                                    <input hidden id="hdnmsgid" />
+                                                </div>
+                                                <div id="loading" class="msg_history" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="split-pane-divider" id="horizontal-divider2"></div>
+                                    <div class="split-pane-component" id="bottom-component2" style="min-height:200px;overflow:hidden">
+                                        <div class="pretty-split-pane-component-inner" style="padding:20px;">
+                                            <div class="panel-bottom" id="divBottom" style="position:relative">
+                                                <div class="form-group">
+                                                    <textarea cols="40" rows="5" class="form-control" placeholder="type your message here" id="txtSmsToSend"></textarea>
+                                                </div>
+                                                <div class="form-group" style="margin-bottom:3px !important">
+                                                    <input type="button" value="Send SMS" class="btn btn-primary" id="btnSendSMS" />
+                                                    <img src="img/loader.gif" id="loader" style="display:none;" />
+                                                </div>
+                                                <div class="alert alert-danger" id="errorMessage" style="display:none;text-align:center;padding:5px !important">
+                                                    <strong id="msg"></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link href="css/bubbly.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/sms.js"></script>
+        <script src="js/menu.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="css/Style.css" rel="stylesheet" />
+        <link href="css/chat.css" rel="stylesheet" />
+        <link href="css/split-pane.css" rel="stylesheet" />
+        <link href="css/pretty-split-pane.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="js/split-pane.js"></script>
+        <script type="text/javascript">
+            $(window).on('load resize', function () {
+                SetPage();
+              
+            });
+            $(document).ready(function () {
+                SetPage();
+                $("#left-component").css('width', '20%');
+            });
+
+            function SetPage() {
+                $('.msg_history').css('height', '100%');
+
+                var windowHeight = $(window).height() - 55;
+                $("#split-pane-1").css('height', windowHeight);
+                $("#splitPanel").css('height', windowHeight);
+                $("#top-component").css('height', windowHeight);
+                $("#bottom-component").css('height', windowHeight);
+                $("#bottom-component2").css('height', '16em');
+           
+                windowHeight = $(window).height();
+
+                var topmHeight = $('#divTop').height();
+                var MsgSendBoxHeight = $('#divBottom').height();
+                var Height = 100;
+
+                $('#divTop').css('max-height', windowHeight - MsgSendBoxHeight);
+                Height = windowHeight - MsgSendBoxHeight;
+                if (Height > 475) {
+                    $('.inbox_chat').css('max-height', windowHeight - 60);
+                    $('.inbox_chat').css('height', windowHeight - 60);                  
+                }
+                else {
+                    $('.inbox_chat').css('max-height', windowHeight - 60);
+                    $('.inbox_chat').css('height', windowHeight - 60);                    
+                }
+            }
+
+            $(function () {
+                $('div.split-pane').splitPane();
+            });
+
+        </script>
+</body>
+</html>

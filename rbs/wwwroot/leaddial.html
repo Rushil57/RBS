@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Internal Sales Lead</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/Style.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+
+    <!--<script src="js/menu.js"></script>-->
+    <!--<script src="js/leaddial.js?v=1.1"></script>-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/leaddial.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form role="form" autocomplete="disabled">
+                    <div style="text-align:right;">
+                        <span id="notfound"></span>
+                        <h3 class="label label-primary" id="lblStatus"></h3>
+                        <h3 class="label-green label-primary-green" id="lblTOLeadType"
+                            style="display: none;">
+                            TAKE OVER
+                        </h3>
+                        &nbsp;
+                        <h3 class="label label-primary" id="lblCurrentLeadId"></h3>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" class="form-control" id="address">
+
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" id="city">
+
+                    </div>
+                    <div class="form-group">
+                        <label>State</label>
+                        <input type="text" class="form-control" id="state">
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" id="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input type="text" class="form-control" id="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="form-inline" id="divphone1" style="display: none; padding-bottom: 10px;">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="phone1" class="form-control">
+                            <button type="button" id="copyPhone1" class="btn btn-default btn-sm" style="display: none;">
+                                <i class="glyphicon glyphicon-copy"></i>
+                            </button>
+                            <select id="phone1status" class="form-control">
+                                <option value="-1">---</option>
+                                <option value="2">No Answer</option>
+                                <option value="3">Answered</option>
+                                <option value="4">Bad</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-inline" id="divphone2" style="display: none; padding-bottom: 10px;">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="phone2" class="form-control">
+                            <button type="button" id="copyPhone2" class="btn btn-default btn-sm" style="display: none;">
+                                <i class="glyphicon glyphicon-copy"></i>
+                            </button>
+                            <select id="phone2status" class="form-control">
+                                <option value="-1">---</option>
+                                <option value="2">No Answer</option>
+                                <option value="3">Answered</option>
+                                <option value="4">Bad</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-inline" id="divphone3" style="display: none; padding-bottom: 10px;">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="phone3" class="form-control">
+                            <button type="button" id="copyPhone3" class="btn btn-default btn-sm" style="display: none;">
+                                <i class="glyphicon glyphicon-copy"></i>
+                            </button>
+                            <select id="phone3status" class="form-control">
+                                <option value="-1">---</option>
+                                <option value="2">No Answer</option>
+                                <option value="3">Answered</option>
+                                <option value="4">Bad</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-inline" id="divphone4" style="display: none; padding-bottom: 10px;">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="phone4" class="form-control">
+                            <button type="button" id="copyPhone4" class="btn btn-default btn-sm" style="display: none;">
+                                <i class="glyphicon glyphicon-copy"></i>
+                            </button>
+                            <select id="phone4status" class="form-control">
+                                <option value="-1">---</option>
+                                <option value="2">No Answer</option>
+                                <option value="3">Answered</option>
+                                <option value="4">Bad</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-inline" id="divphone5" style="display: none; padding-bottom: 10px;">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" id="phone5" class="form-control">
+                            <button type="button" id="copyPhone5" class="btn btn-default btn-sm" style="display: none;">
+                                <i class="glyphicon glyphicon-copy"></i>
+                            </button>
+                            <select id="phone5status" class="form-control">
+                                <option value="-1">---</option>
+                                <option value="2">No Answer</option>
+                                <option value="3">Answered</option>
+                                <option value="4">Bad</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input type="button" value="No Answer" class="btn btn-primary" id="btnNowanswer" />
+                            <fieldset style="display: inline; border: 1px solid black; padding: 0 5px 10px">
+                                <legend style="margin-bottom: 0; width: 26%;">Connect</legend>
+                                <img src="img/loader.gif" id="loadernoanswer" style="display: none;" />
+                                <input type="button" value="Not Intersted" class="btn btn-primary" id="btnNotinterseted">
+                                <img src="img/loader.gif" id="loadernotintersted" style="display: none;" />
+                                <input type="button" value="Follow Up" class="btn btn-primary" id="btnFollowup">
+                                <img src="img/loader.gif" id="loaderfollowup" style="display: none;" />
+                                <input type="button" value="Sched Appt" class="btn btn-primary" id="btnSchedappt">
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div id="followUp" class="form-group" style="display: none;">
+                        <label>When</label>
+                        <input type="text" id="followupdate" class="form-control">
+                    </div>
+                    <div id="schedAppt" class="form-group" style="display: none;">
+                        <label>Sched Appt Date</label>
+                        <input type="text" id="schedApptupdate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Set Follow Up" id="btnFollowUp" class="btn btn-primary" style="display: none;">
+                        <input type="button" value="Do It!" id="btnSched" class="btn btn-primary" style="display: none;">
+                        <input type="button" value="Send SMS" id="btnSendSMS" class="btn btn-primary" style="display: none;">
+                        <img src="img/loader.gif" id="loader" style="display: none;" />
+                        <label id="IsConfirmed" class="confirmlabel">Confirmed</label>
+                        <label id="IsWaiting" style="display: none; color: red">Waiting for customer response.</label>
+                        <p id="bmsg" style="color: red; font-size: medium;"></p>
+                    </div>
+                    <div class="alert alert-danger" id="errorMessage" style="display: none;">
+                        <strong id="msg"></strong>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Note</label>
+                                <textarea cols="40" rows="5" id="txtNoteText" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" value="Save Note" class="btn btn-primary" id="btnSaveNote" />
+                            </div>
+                            <hr />
+                            <h3>History</h3>
+                            <span id="spanPastNotes"></span>
+                            <div id="loading" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                        </form>
+                    </div>
+
+                    <div id="divNotes"></div>
+                    <span id="spanResults"></span>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form role="form">
+
+                    <div class="form-inline" style="text-align:center;margin-bottom:20px">
+                        <select id="ddlSearchDate" class="form-control">
+                            <option value="nothing"></option>
+                            <option value="create">Create</option>
+                            <option value="install">Install</option>
+                        </select>
+                        <label for="txtStartDate" class="mr-sm-2">From</label>
+                        <input id="txtStartDate" class="form-control" type="text" autocomplete="off">
+                        <label for="txtEndDate" class="mr-sm-2">To</label>
+                        <input id="txtEndDate" class="form-control" type="text" autocomplete="off">
+
+                        <label for="ddlSearchField" class="mr-sm-2" id="lblFilterBy">Search By</label>
+                        <select id="ddlSearchField" class="form-control">
+                            <option value="name">Name</option>
+                            <option value="accountid">AccountId</option>
+                            <option value="address">Address</option>
+                            <option value="phone">Phone</option>
+                            <option value="city">City</option>
+                            <option value="state">State</option>
+                            <option value="area">Area</option>
+                            <option value="status">Status</option>
+                            <option value="fieldrep">FieldRep</option>
+                            <option value="tech">Tech</option>
+                        </select>
+                        <label for="txtSearchAccount" class="mr-sm-2" id="lblSearch">Search</label>
+                        <input id="txtSearchAccount" class="form-control" type="search" placeholder="Search" aria-label="Search" onkeypress="return SearchOnEnter(event);">
+                        <select id="ddlSearchValue" class="form-control" style="display:none"></select>
+
+                        <input type="button" class="btn btn-primary" id="btnSearch" value="Search" style="width: 100px;" />
+                        <input type="button" class="btn btn-primary" value="New" onclick="CreateAccountEntry();" />
+                    </div>
+                    <span id="spanAccountResults"></span>
+                    <div id="loader" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                    <div class="col-md-12 alert alert-danger" id="errorMessage" style="display: none;">
+                        <strong id="msg"></strong>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var cacheBust = ['js/account.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</body>
+</html>

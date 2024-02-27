@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script src="js/util.js?v=1.1"></script>
+    <!--<script src="js/menu.js"></script>
+    <script src="js/user.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/user.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        }); 
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                    <!--<img src="img/pl_72x72.png" />-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>                    
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form role="form">
+
+                    <div class="form-inline" style="text-align:center;">
+                        <label for="ddlSearchField" class="mr-sm-2" id="lblFilterBy" style="margin-bottom:10px">Filter By</label>
+                        <select id="ddlSearchField" class="form-control" style="margin-bottom:10px">
+                            <option value="name">Name</option>
+                            <option value="phone">Phone</option>
+                            <option value="email">Email</option>
+                            <option value="agenttype">Agent Type</option>
+                            <option value="status">Status</option>
+                        </select>
+                        <label for="txtSearchAgent" class="mr-sm-2" id="lblSearch" style="margin-bottom:10px">Search</label>
+                        <input id="txtSearchAgent" class="form-control" type="search" placeholder="Search" aria-label="Search" style="margin-bottom:10px">
+
+                        <input type="button" class="btn btn-primary" id="btnSearch" value="Search" style="width: 100px;margin-bottom:10px" />
+                        <input type="button" class="btn btn-primary" value="New" id="btnNew" onclick="CreateUserEntry();" style="margin-bottom:10px" />
+                    </div>
+                    <br />
+                    <span id="spanAgentResults"></span>
+                    <div id="loader" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                    <h2 id="msg" style="text-align:center;"></h2>
+
+                </form>
+            </div>
+        </div>
+    </div>   
+</body>
+</html>

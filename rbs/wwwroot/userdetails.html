@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/user.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+    </script>
+</head>
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div id="">
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>User Detail</h2>
+                        </div>
+                        <form role="form">
+                            <div id="divDetails">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>First Name </label> <span style="color:red;font-size:15px;">*</span>
+                                        <input type="text" class="form-control" id="txtFirstName" required />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Last Name</label><span style="color:red;font-size:15px;">*</span>
+                                        <input type="text" class="form-control" id="txtLastName" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label><span style="color:red;font-size:15px;">*</span>
+                                        <input type="text" class="form-control" id="txtEmail" onblur="validateEmail(this);" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input type="text" class="form-control" id="txtphone" maxlength="20" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" id="txtpassword" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Agent Type</label>
+                                        <select id="DDLAgentType" name="DDLAgentType" class="form-control"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enabled</label>
+                                        <input type="checkbox" id="chkIsEnabled" name="chkIsEnabled" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <input type="hidden" id="hdnaccountid" />
+                                        <input type="button" value="Submit" class="btn btn-primary" id="btnSubmit">
+                                        <input type="button" value="Cancel" class="btn btn-primary" id="btnCancel" onclick="CancelAgent();">
+                                    </div>
+
+                                    <div class="alert alert-success" id="successMsg" style="display: none;">
+                                        <strong>User Created Successfully!</strong>
+                                    </div>
+                                    <div class="alert alert-success" id="updateMsg" style="display: none;">
+                                        <strong id="recordmsg">User Update Successfully!</strong>
+                                    </div>
+                                    <div class="alert alert-danger" id="errorMessage" style="display: none;">
+                                        <strong id="msg"></strong>
+                                    </div>
+                                    <hr />
+                                </div>
+                            </div>
+
+                        </form>
+                        <div id="loader" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

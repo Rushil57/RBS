@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | Compensation Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        #comissionForm .column {
+            vertical-align: top;
+            display: inline-block;
+            width: 30%;
+        }
+
+        #comissionForm .deduction-input:first-child a,
+        #comissionForm .addition-input:first-child a {
+            display: none;
+        }
+
+        #comissionForm fieldset div {
+            padding-bottom: 5px;
+        }
+
+        #comissionForm .comission-result label {
+            display: block;
+        }
+
+        #comissionForm .comission-result label span {
+            float: right;
+        }
+
+        #comissionForm .comission-result label span::before {
+            content: '$';
+        }
+    </style>
+<!--
+    <script type="text/javascript">
+            $(document).ready(function () {
+                var cacheBust = ['js/user.js', 'js/menu.js'];
+                ClearCache(cacheBust);
+            });
+        </script>
+-->
+</head>
+<body>
+    <div id="wrapper">
+        <!--
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">Prolink</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul id="menu" class="nav navbar-nav"></ul>
+                        </div>
+                        <span id="spanClockinout" class="Clockinout"></span>
+                    </div>
+                </nav>
+        -->
+        <div id="page-wrapper">
+            <div class="panel-body">
+                <form id="comissionForm" method="post">
+                    <fieldset class="column">
+                        <legend>Inputs</legend>
+
+                        <div>
+                            <label>Package:</label>
+
+                            <select name="package" required title="Package">
+                                <option value="6">P</option>
+                                <option value="15">AV</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="mmr" placeholder="MMR" required title="MMR" />
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="feesCollected" placeholder="Fees collected" required title="Fees collected from customer" />
+                        </div>
+
+                        <div>
+                            <label>Credit Score:</label>
+
+                            <select name="creditScore" required title="Credit score">
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Term:</label>
+
+                            <select name="term" required title="Term">
+                                <option>36</option>
+                                <option>42</option>
+                                <option>60</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Payment Method:</label>
+
+                            <select name="paymentMethod" required title="Payment method">
+                                <option>ACH</option>
+                                <option>CC</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="monthsWaived" placeholder="Months waived" required title="Months waived" />
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="pointsUsed" placeholder="Equipment points used" required title="Equipment points used" />
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="grossPay" placeholder="Gross pay" required title="Gross pay" />
+                        </div>
+
+                        <div>
+                            <input type="number" step="0.01" name="customerBuyout" placeholder="Customer buyout" required title="Customer buyout" />
+                        </div>
+
+                    </fieldset>
+
+                    <div class="column">
+                        <fieldset>
+                            <legend>Additions</legend>
+
+                            <div class="comission-additions">
+                                <div class="addition-input"><input type="number" step="0.01" name="additions[]" /> <a class="remove-addition" href="javascript:void(0)">remove</a></div>
+                            </div>
+
+                            <button type="button" class="add-addition">Add</button>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Deductions</legend>
+
+                            <div class="comission-deductions">
+                                <div class="deduction-input"><input type="number" step="0.01" name="deductions[]" /> <a class="remove-deduction" href="javascript:void(0)">remove</a></div>
+                            </div>
+
+                            <button type="button" class="add-deduction">Add</button>
+                        </fieldset>
+                    </div>
+
+                    <fieldset class="column">
+                        <legend>Results</legend>
+
+                        <div class="comission-result">
+                            <label>Total Pay: <span class="out-total-pay"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Additions: <span class="out-additions"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Deductions: <span class="out-deductions"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Equipment +/-: <span class="out-equipment"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>MMR Increase/Decrease: <span class="out-mmr"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Points +/-: <span class="out-points"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Months Waived: <span class="out-months-waived"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Upfront Pay: <span class="out-upfront-pay"></span></label>
+                        </div>
+
+                        <div class="comission-result">
+                            <label>Holdback: <span class="out-holdback"></span></label>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript">
+        (function($, window, undefined) {
+            const $form = $('#comissionForm');
+
+            function calculate() {
+                // Additions
+                var additions = 0;
+                $('.comission-additions input', $form).each(function() {
+                    const val = parseFloat($(this).val());
+                    additions += (isNaN(val))? 0: val;
+                });
+                $('.out-additions', $form).text(additions.toFixed(2));
+
+                // Deductions
+                var deductions = 0;
+                $('.comission-deductions input', $form).each(function() {
+                    const val = parseFloat($(this).val());
+                    deductions += (isNaN(val))? 0: val;
+                });
+                $('.out-deductions', $form).text('(' + deductions.toFixed(2) + ')');
+
+                // Equipment +/-
+                const pointsIncluded = parseFloat($('[name=package]', $form).val());
+                const pointsUsed = parseFloat($('[name=pointsUsed]', $form).val());
+                const equipment = (isNaN(pointsIncluded) || isNaN(pointsUsed))? 0: pointsIncluded - pointsUsed;
+                $('.out-equipment', $form).text(equipment.toFixed(2));
+
+                // MMR Increase/Decrease
+                const origMmr = parseFloat($('[name=mmr]', $form).val());
+                const mmr = origMmr - ((pointsIncluded == 6)? 53.99: 59.99);
+                $('.out-mmr', $form).text((isNaN(mmr)? 0: mmr).toFixed(2));
+
+                // Points +/-
+                const points = equipment + mmr;
+                $('.out-points', $form).text((isNaN(points)? 0: points).toFixed(2));
+
+                // Months waived
+                const monthsWaived = - parseFloat($('[name=monthsWaived]').val()) * origMmr;
+                $('.out-months-waived').text((isNaN(monthsWaived)? 0: monthsWaived).toFixed(2));
+
+                // Upfront Pay
+
+                const creditScore = $('[name=creditScore]', $form).val();
+                const creditScoreNum = ('B' == creditScore)? 100: (('C' == creditScore)? 200: 0);
+
+                const term = $('[name=term]', $form).val();
+                const termNum = ('42' == term)? 125: (('36' == term)? 200: 0);
+
+                const grossPay = parseFloat($('[name=grossPay]', $form).val());
+                const customerBuyout = parseFloat($('[name=customerBuyout]', $form).val());
+                const feesCollected = parseFloat($('[name=feesCollected]', $form).val());
+                const paymentMethod = $('[name=paymentMethod]', $form).val();
+
+                const upfrontPayPre = grossPay
+                    - monthsWaived
+                    - customerBuyout
+                    - creditScoreNum
+                    - termNum
+                    - (('CC' == paymentMethod)? 100: 0)
+                    + points * 25;
+
+                const holdback = upfrontPayPre * 0.1;
+                const upfrontPay = upfrontPayPre * 0.9 + feesCollected;
+
+                $('.out-holdback', $form).text((isNaN(holdback)? 0: holdback).toFixed(2));
+                $('.out-upfront-pay', $form).text((isNaN(upfrontPay)? 0: upfrontPay).toFixed(2));
+
+                // Total pay
+                const totalPay = upfrontPay - deductions + additions;
+                $('.out-total-pay', $form).text((isNaN(totalPay)? 0: totalPay).toFixed(2));
+            }
+
+            calculate();
+
+            // Additions
+
+            $('.comission-additions', $form).on('click', '.remove-addition', function(e) {
+                $(this).parent().remove();
+            });
+
+            $('.add-addition', $form).on('click', function(e) {
+                const $container = $(this).parent().find('.comission-additions');
+                const $clone = $('.addition-input', $container).first().clone();
+                $('input', $clone).val('');
+                $container.append($clone);
+            });
+
+            // Deductions
+
+            $('.comission-deductions', $form).on('click', '.remove-deduction', function(e) {
+                $(this).parent().remove();
+            });
+
+            $('.add-deduction', $form).on('click', function(e) {
+                const $container = $(this).parent().find('.comission-deductions');
+                const $clone = $('.deduction-input', $container).first().clone();
+                $('input', $clone).val('');
+                $container.append($clone);
+            });
+
+            $form.on('change paste keyup', 'input, select', function(e) {
+                calculate();
+            });
+
+            $('.add-addition, .add-deduction', $form).on('click', function() {
+                calculate();
+            });
+
+            $('.comission-additions, .comission-deductions', $form).on('click', '.remove-addition, .remove-deduction', function() {
+                calculate();
+            });
+
+            $form.on('submit', function(e) {
+                e.preventDefault();
+            });
+        })(jQuery, window);
+    </script>
+</body>
+</html>

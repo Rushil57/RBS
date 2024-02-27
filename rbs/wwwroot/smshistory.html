@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>PROLINK CRM | SMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+</head>
+<body>
+    <div id="wrapper" style="position:fixed;z-index:99999">
+        <nav class="navbar navbar-inverse" id="menus">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul id="menu" class="nav navbar-nav"></ul>
+                    <span id="spanClockinout"></span>
+                </div>
+            </div>
+        </nav>
+        <div class="userInfo" id="divTop">
+            <div class='chat_people'>
+                <div class='chat_img'>
+                    <!--<button class="btnBack" style="display:inline-block" onclick="goBack()">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </button>-->
+
+                </div>
+                <div class='chat_ib' style="padding-top:15px">
+                    <img src='https://ptetutorials.com/images/user-profile.png' alt='No Image' style="margin:-11px 8px 2px -12px;height:40px;display:inline-block">
+
+                    <span style="font-weight:300;color:#fff;padding-top:10px;" id="uname"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inbox_people" style="margin-top:100px">
+        <div class="col-md-12" id="divChat">
+            <div id="msgHistory" class="msgHistory">
+                <div id="msgs">
+                    <span id="mess"></span>
+                </div>
+            </div>
+            <div id="loading" class="msg_history" style="display:none; text-align:center;"><img src="img/loading.gif" /></div>
+            <div id="loadingHistory" class="msg_history" style="display:none; text-align:center;"><img src="img/loading.gif" style="height:50px;width:50px" /></div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <link href="css/chat.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/smshistory.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+        });
+        window.onload = function () {
+            var uname = getParameterByName("uname");
+            uname = uname.match(/[^$]+/g).join(' ');
+            uname = uname.match(/[^@]+/g).join(' & ');
+            $("#uname").html(uname);
+        }
+
+    </script>
+</body>
+</html>

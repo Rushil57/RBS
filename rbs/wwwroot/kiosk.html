@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <title>WELCOME TO PROLINK!</title>
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Prolink</a>
+                </div>
+                <span id="spanClockinout" class="Clockinout"></span>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div id="divdetails">
+                <div class="panel-body">
+                    <div class="row">
+                        <form role="form">
+                            <div class="col-md-12" style="margin-top:20px">
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" href="#collapse1">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Basic Info
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse1" class="panel-collapse collapse ">
+                                        <div class="panel-body">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>First Name:</label>
+                                                    <input type="text" class="form-control" id="txtfirstname" />
+                                                    
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Last Name:</label>
+                                                    <input type="text" class="form-control" id="txtlastname" />
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>
+                                                        Phone:
+                                                    </label>
+                                                    <input type="text" class="form-control" id="txtphone" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Email:</label>
+                                                    <input type="text" class="form-control" id="txtemail" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Agent Type:</label>                                                    
+                                                    <select class="form-control" name="DDLAgentType" id="DDLAgentType"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <input type="button" value="Next" class="btn btn-primary" id="btnNext1" data-toggle="collapse" href="#collapse2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" href="#collapse2">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Badge
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse2" class="panel-collapse collapse ">
+                                        <div class="panel-body">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Online conf:</label>
+                                                    <input type="text" class="form-control" id="txtonlineconf" />
+                                                    <span id="lblonlineconf" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Signals conf:</label>
+                                                    <input type="text" class="form-control" id="txtsignalsconf" />
+                                                    <span id="lblsignalsconf" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="button" value="Prev" class="btn btn-primary" id="btnPrev1" data-toggle="collapse" href="#collapse1">
+                                                <input type="button" value="Next" class="btn btn-primary" id="btnNext2" data-toggle="collapse" href="#collapse3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" href="#collapse3">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Introduction to Prolink
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse3" class="panel-collapse collapse ">
+                                        <div class="panel-body">
+                                            <!--<div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Alternate Address (optional):</label>
+                                                    <input type="text" class="form-control" id="txtbAddress" />
+                                                    <span id="lblbAddress" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Alternate City:</label>
+                                                    <input type="text" class="form-control" id="txtbCity" />
+                                                    <span id="lblbCity" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Alternate State:</label>
+                                                    <input type="text" class="form-control" id="txtbState" />
+                                                    <span id="lblbState" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Alternate Zip:</label>
+                                                    <input type="text" class="form-control" id="txtbZip" />
+                                                    <span id="lblbZip" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>HO Verification:</label>
+                                                    <input type="radio" value="1" name="rdbhoverification" id="rdbhoVerification_Yes" style="margin:5px 5px 10px 10px" />Yes
+                                                    <input type="radio" value="0" name="rdbhoverification" id="rdbhoVerification_No" style="margin:10px 5px 10px 10px" />No
+                                                    <span id="lblhoverification" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Emer Name1:</label>
+                                                    <input type="text" class="form-control" id="txtEmername1" />
+                                                    <span id="lblEmername1" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Emer Phone1:</label>
+                                                    <input type="text" class="form-control" id="txtEmerphone1" maxlength="10" />
+                                                    <span id="lblEmerphone1" />
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label>Emer Name2:</label>
+                                                    <input type="text" class="form-control" id="txtEmername2" />
+                                                    <span id="lblEmername2" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Emer Phone2:</label>
+                                                    <input type="text" class="form-control" id="txtEmerphone2" maxlength="10" />
+                                                    <span id="lblEmerphone2" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>
+                                                        Verbal Passcode:
+                                                    </label>
+                                                    <input type="text" class="form-control" id="txtverbalpasscode" />
+                                                    <span id="lblVerbalPasscoe" />
+                                                </div>
+
+                                            </div>-->
+                                            <input type="button" value="Prev" class="btn btn-primary" id="btnPrev2" data-toggle="collapse" href="#collapse2">
+                                            <input type="button" value="Next" class="btn btn-primary" id="btnNext3" data-toggle="collapse" href="#collapse4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <a data-toggle="collapse" href="#collapse4">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                Other Info
+                                            </h4>
+                                        </div>
+                                    </a>
+                                    <div id="collapse4" class="panel-collapse collapse ">
+                                        <div class="panel-body">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Emergency Contacts:</label>
+                                                    <input type="text" class="form-control" id="txtEmergencyContact" />
+                                                    <span id="lblEmergencyContact" />
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Banking Info:</label>
+                                                    <input type="text" class="form-control" id="txtBankInfo" />
+                                                    <span id="lblBankInfo" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Tax Info:</label>
+                                                    <input type="text" class="form-control" id="txtTaxInfo" />
+                                                    <span id="lblTaxInfo" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Hat Size:</label>
+                                                    <input type="text" class="form-control" id="txtHatSize" />
+                                                    <span id="lblHatSize" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Waist Size:</label>
+                                                    <input type="text" class="form-control" id="txtWaistSize" />
+                                                    <span id="lblWaistSize" />
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12 form-group">
+                                                <input type="button" value="Prev" class="btn btn-primary" id="btnPrev3" data-toggle="collapse" href="#collapse3">
+                                                <input type="button" value="Next" class="btn btn-primary" id="btnNext4" data-toggle="collapse" href="#collapse5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <a data-toggle="collapse" href="#collapse5">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            Review ICA
+                                        </h4>
+                                    </div>
+                                </a>
+
+                                <div id="collapse5" class="panel-collapse collapse ">
+                                    <div class="panel-body">
+
+                                        <div class="form-group">
+
+                                            <textarea rows="4" cols="50" id="notes" class="form-control"></textarea>
+                                            <br />
+                                            <img src="img/loader.gif" id="loadernote" style="display:none;" />
+                                            <input type="button" value="Add Note" class="btn btn-primary" id="addnote" style="display:none;" onclick="SaveAccountNote();">
+                                            <button type="button" id="fileAttachmentupload" class="btn btn-primary" style="display:inline-block"><i class="fa fa-paperclip"></i></button>
+                                            <input id="fileid" type="file" style="display:none" accept=".jpg,.png,.pdf" onchange="validateFileType()" />
+                                            <br />
+                                            <label id="lblAttchmentFileName"></label>
+                                        </div>
+                                        <div class="alert alert-success" id="successSschednotes" style="display: none;">
+                                            <strong>Note Added successfully.</strong>
+                                        </div>
+                                        <div class="alert alert-danger" id="errorMessageschednotes" style="display: none;">
+                                            <strong id="msgNote"></strong>
+                                        </div>
+                                        <div>
+                                            <input type="button" value="Submit" class="btn btn-primary" id="btnSubmit">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="js/util.js?v=1.1"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/Style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var cacheBust = ['js/kiosk.js', 'js/menu.js'];
+            ClearCache(cacheBust);
+
+        });
+
+    </script>
+</body>
+</html>
